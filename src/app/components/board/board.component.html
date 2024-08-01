@@ -1,0 +1,22 @@
+<app-header></app-header>
+<div class="container">
+  <h2>{{ routeParam }}</h2>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th *ngFor="let col of columns">{{ col }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of data; let rowIndex = index">
+        <td *ngFor="let cell of row; let colIndex = index">
+          <input
+            type="text"
+            [value]="cell"
+            (keydown)="onCellKeydown($event, rowIndex, colIndex)"
+          />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

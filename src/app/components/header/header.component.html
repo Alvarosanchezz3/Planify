@@ -1,0 +1,28 @@
+<header>
+  <a href="" class="logo">
+    <img class="img1" src="../../../assets/icons/planify/planify.png">
+  </a>
+
+  <ul class="navbar">
+    <li><a *ngIf="isLoggedIn" routerLink="" routerLinkActive="active">Home</a></li>
+    <li><a *ngIf="isLoggedIn" routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
+    <li><a *ngIf="isLoggedIn" routerLinkActive="active">Profile</a></li>
+    <li><a *ngIf="isLoggedIn" routerLinkActive="active">Settings</a></li>
+  </ul>
+
+  <div class="main">
+    <ng-container *ngIf="isLoggedIn; else signIn">
+      <div class="userInfo-container">
+        <img src="{{ userProfileImg }}" alt="profile-picture" class="img-profile">
+        <a class="username">{{ userName }}</a>
+      </div>
+      <a class="user" (click)="signOut()"><span>Log Out</span></a>
+    </ng-container>
+
+    <ng-template #signIn>
+      <a routerLink="/login" class="user"><span>Sign in</span></a>
+    </ng-template>
+
+    <div class="bx bx-menu" *ngIf="isLoggedIn" id="menu-icon"></div>
+  </div>
+</header>

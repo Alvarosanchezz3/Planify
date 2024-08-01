@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="title-container">
+    <h1 class="title">
+      Hi, <span>{{ userName }}</span>
+    </h1>
+    <p class="subtitle">What do you have to do today? 📝</p>
+  </div>
+
+  <!-- Mostrar tableros si `areBoards` es true -->
+  <div class="boards_container" *ngIf="areBoards">
+    <div
+      class="board"
+      *ngFor="let board of boards"
+      (click)="navigate(board.title)"
+    >
+      <h3>{{ board.title }}</h3>
+      <p>{{ board.description }}</p>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="90"
+        height="90"
+        viewBox="0 0 20 20"
+      >
+        <g fill="#ffffff">
+          <path
+            d="M10.707 10.707a1 1 0 0 1-1.414-1.414l6-6a1 1 0 1 1 1.414 1.414z"
+          />
+          <path
+            d="M15 15v-3.5a1 1 0 1 1 2 0V16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h4.5a1 1 0 0 1 0 2H5v10zm2-7a1 1 0 1 1-2 0V4a1 1 0 1 1 2 0z"
+          />
+          <path d="M12 5a1 1 0 1 1 0-2h4a1 1 0 1 1 0 2z" />
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Mostrar mensaje si `areBoards` es false -->
+  <div class="no-boards_container" *ngIf="!areBoards">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="90"
+      height="90"
+      viewBox="0 0 512 512"
+    >
+      <path
+        fill="#363d45"
+        d="M491 320h-24l-17-196q-1-25-19.5-42.5T388 64H277V21q0-21-21-21t-21 21v43H124q-24 0-42.5 17.5T62 124L45 320H21q-9 0-15 6t-6 15q0 10 6 16t15 6h79L64 484q-3 8 2 16t13 10h6q13 0 22-15l38-132h90v85q0 21 21 21t21-21v-85h90l38 134q3 15 22 15h6q19-7 15-26l-36-123h79q9 0 15-6t6-16q0-9-6-15t-15-6m-404 0l18-194q0-8 6.5-13.5T126 107h262q9 0 15.5 5.5T410 126l17 194z"
+      />
+    </svg>
+    <h3>Lets import your first board of Trello</h3>
+  </div>
+</div>
